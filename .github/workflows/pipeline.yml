@@ -29,3 +29,5 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
+    - name: Terraform Plan
+      run: terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
