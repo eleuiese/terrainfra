@@ -1,40 +1,40 @@
 variable "vpc_id" {
-  type = string
+  type        = string
   description = "ID of VPC"
 }
 
 variable "ecs_task_role" {
-    description = "The ARN of IAM role"
-    type        = string
-    default     = ""
+  description = "The ARN of IAM role"
+  type        = string
+  default     = ""
 }
 
 variable "ecs_task_execution_role" {
-    description = "The ARN of IAM execution role"
-    type        = string
-    default     = ""
+  description = "The ARN of IAM execution role"
+  type        = string
+  default     = ""
 }
 
 variable "public_subnet1_id" {
-  type = string
+  type        = string
   description = "ID of public subnet 1"
-  default = ""
+  default     = ""
 }
 
 variable "public_subnet2_id" {
-  type = string
+  type        = string
   description = "ID of public subnet 2"
-  default = ""
+  default     = ""
 }
 
 variable "ecs_fargate_sg" {
-  type = string
+  type        = string
   description = "ID of sg"
-  default = ""
+  default     = ""
 }
 
 variable "django_ecs_target_arn" {
-  type = string
+  type        = string
   description = "arn target ecs"
-  default = ""
+  default     = ""
 }

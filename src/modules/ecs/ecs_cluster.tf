@@ -21,7 +21,7 @@ resource "aws_ecs_task_definition" "django_task_definition" {
   network_mode             = "awsvpc"
   cpu                      = "256"
   memory                   = "1024"
-  requires_compatibilities = [ "FARGATE" ]
+  requires_compatibilities = ["FARGATE"]
   container_definitions = jsonencode([
     {
       name      = "first"
@@ -55,10 +55,10 @@ resource "aws_ecs_service" "calc" {
   network_configuration {
     assign_public_ip = true
     security_groups  = [aws_security_group.ecs_fargate_sg.id]
-    subnets          = [data.aws_subnet.public_subnet1.id,data.aws_subnet.public_subnet2.id]
+    subnets          = [data.aws_subnet.public_subnet1.id, data.aws_subnet.public_subnet2.id]
   }
 
-lifecycle {
+  lifecycle {
     ignore_changes = [
       task_definition,
       desired_count
@@ -69,24 +69,24 @@ lifecycle {
 #security_groups
 
 resource "aws_security_group" "ecs_fargate_sg" {
-    name = "ecs_fargate_Sg"
-    vpc_id = data.aws_vpc.vpc_main.id
-    description = "Permitir http"
+  name        = "ecs_fargate_Sg"
+  vpc_id      = data.aws_vpc.vpc_main.id
+  description = "Permitir http"
 
-    ingress {
-        from_port = 9000
-        to_port = 9000
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    egress {
-        from_port = 0
-        to_port = 0
-        protocol = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
+  ingress {
+    from_port   = 9000
+    to_port     = 9000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-    tags = {
-        Name = "ecs_fargate_sg"
-    }
+  tags = {
+    Name = "ecs_fargate_sg"
+  }
 }

@@ -1,5 +1,5 @@
 #Networking
-variable "environment" {  
+variable "environment" {
 }
 
 variable "vpc_cidr" {
