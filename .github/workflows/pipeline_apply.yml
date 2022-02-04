@@ -3,7 +3,8 @@ name: Pipeline IaC
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   terraform:
@@ -29,5 +30,6 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-    - name: Terraform Plan
-      run: terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
+    - name: Terraform Apply
+      run: terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve
+      
