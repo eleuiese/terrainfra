@@ -1,19 +1,17 @@
-name: Deploy Infrastructure
+---
+name: Pipeline IaC
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   terraform:
-    name: Deploy Site
+    timeout-minutes: 15
+    name: 'Terraform'
     runs-on: ubuntu-latest
-
-steps:
-- uses: actions/checkout@v2 #clonar el codigo de terraform para pipeline
-- uses: hashicorp/setup-terraform@v1 #github actions de hashicorp
-
-- name: Terraform fmt
-  id: fmt
-  run: terraform fmt -check
-  continue-on-error: true
+    env:
+      GITHUB_TOKEN: ${{ secrets.TF_GITHUB_TOKEN }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
