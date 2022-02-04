@@ -1,1 +1,24 @@
-# terrainfra
+- _terrainfra_
+   - [README.md](README.md)
+   - [backend.tf](backend.tf)
+   - [develop.auto.tfvars](develop.auto.tfvars)
+   - [main.tf](main.tf)
+   - [variables.tf](variables.tf)
+   - [outputs.tf](outputs.tf)
+   - [provider.tf](provider.tf)
+   - [read.md](read.md)
+   - _src_
+     - _modules_
+       - _ecs_
+         - [ecs\_cluster.tf](src/modules/ecs/ecs_cluster.tf)
+         - [variables.tf](src/modules/ecs/variables.tf)
+       - _iam_
+         - [main.tf](src/modules/iam/main.tf)
+         - [output.tf](src/modules/iam/output.tf)
+       - _network_
+         - [main.tf](src/modules/network/main.tf)
+         - [output.tf](src/modules/network/output.tf)
+         - [variables.tf](src/modules/network/variables.tf)
+       - _rds_
+         - [rds.tf](src/modules/rds/rds.tf)
+         - [variables.tf](src/modules/rds/variables.tf)    
