@@ -1,0 +1,19 @@
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  terraform:
+    name: Deploy Site
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2 #clonar el codigo de terraform para pipeline
+    - uses: hashicorp/setup-terraform@v1 #github actions de
+
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
